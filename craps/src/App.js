@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, NavbarBrand, NavbarLinks, NavLink, Footer } from './AppStyles';
 import Home from './components/Home';
 import Schedule from './components/Schedule';
