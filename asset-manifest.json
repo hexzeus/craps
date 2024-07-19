@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/craps/static/css/main.1dc2dda6.css",
-    "main.js": "/craps/static/js/main.7fd49270.js",
+    "main.js": "/craps/static/js/main.afd89f6f.js",
     "static/js/453.9b2cb6a6.chunk.js": "/craps/static/js/453.9b2cb6a6.chunk.js",
     "static/media/buffalodice.jpg": "/craps/static/media/buffalodice.9c315a88d4c22008e7c7.jpg",
     "index.html": "/craps/index.html",
     "main.1dc2dda6.css.map": "/craps/static/css/main.1dc2dda6.css.map",
-    "main.7fd49270.js.map": "/craps/static/js/main.7fd49270.js.map",
+    "main.afd89f6f.js.map": "/craps/static/js/main.afd89f6f.js.map",
     "453.9b2cb6a6.chunk.js.map": "/craps/static/js/453.9b2cb6a6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1dc2dda6.css",
-    "static/js/main.7fd49270.js"
+    "static/js/main.afd89f6f.js"
   ]
 }
