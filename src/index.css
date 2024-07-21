@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Added to replace comment about -moz-osx-font-smoothing */
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  /* Ensuring it's used correctly */
+  -ms-text-size-adjust: 100%;
+  /* For IE */
+  text-size-adjust: 100%;
+  /* Standard property */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
