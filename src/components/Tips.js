@@ -14,6 +14,7 @@ function Tips() {
                     <InteractiveToolLink to="/interactive-tool4">Horn High Bets Explained</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool5">$15 Place Bets</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool6">$25 Place Bets</InteractiveToolLink>
+                    <InteractiveToolLink to="/interactive-tool7">Odds & Payouts</InteractiveToolLink>
                 </ToolContainer>
                 <Title>Tips & Resources</Title>
                 <Lead>Explore tips and resources to improve your skills as a craps dealer.</Lead>
