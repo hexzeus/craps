@@ -10,7 +10,7 @@ import InteractiveTool2 from './components/InteractiveTool2';
 import InteractiveTool3 from './components/InteractiveTool3';
 import InteractiveTool4 from './components/InteractiveTool4';
 import InteractiveTool5 from './components/InteractiveTool5';
-import InteractiveTool6 from './components/InteractiveTool6';  // Import the new component
+import InteractiveTool6 from './components/InteractiveTool6'; // Import the new component
 import ScrollToTop from './components/ScrollToTop';
 import logo from './images/logo.png';
 import mainImage from './images/main.jpg';
