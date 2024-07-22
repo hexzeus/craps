@@ -11,7 +11,6 @@ import InteractiveTool3 from './components/InteractiveTool3';
 import InteractiveTool4 from './components/InteractiveTool4';
 import InteractiveTool5 from './components/InteractiveTool5';
 import InteractiveTool6 from './components/InteractiveTool6';
-import InteractiveTool7 from './components/InteractiveTool7';  // Import the new component
 import ScrollToTop from './components/ScrollToTop';
 import logo from './images/logo.png';
 import mainImage from './images/main.jpg';
@@ -47,7 +46,6 @@ function App() {
             <Route path="/interactive-tool4" element={<InteractiveTool4 />} />
             <Route path="/interactive-tool5" element={<InteractiveTool5 />} />
             <Route path="/interactive-tool6" element={<InteractiveTool6 />} />
-            <Route path="/interactive-tool7" element={<InteractiveTool7 />} />  {/* Add this route */}
             <Route path="/" element={<Home />} />
           </Routes>
         </main>
