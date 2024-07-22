@@ -18,7 +18,7 @@ function Contact() {
                     </InfoItem>
                     <InfoItem>
                         <InfoLabel>Email:</InfoLabel>
-                        <InfoValue><a href="mailto:info@buffalocreekcraps.com">info@buffalocreekcraps.com</a></InfoValue>
+                        <InfoValue><a href="mailto:buffalocreekcraps@yahoo.com">buffalocreekcraps@yahoo.com</a></InfoValue>
                     </InfoItem>
                     <InfoItem>
                         <InfoLabel>Office Hours:</InfoLabel>
