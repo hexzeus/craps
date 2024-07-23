@@ -1,110 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-const Container = styled.div`
-  background-color: black;
-  color: white;
-  padding: 20px;
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  color: red;
-`;
-
-const Lead = styled.p`
-  color: white;
-  font-size: 1.2em;
-  margin-bottom: 20px;
-`;
-
-const CrapsTable = styled.div`
-  margin: 20px 0;
-`;
-
-const Row = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin: 10px 0;
-  position: relative;
-`;
-
-const Block = styled.div`
-  background-color: ${({ bgColor }) => bgColor};
-  color: black;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 0 10px;
-  border-radius: 10px;
-`;
-
-const Odds = styled.div`
-  position: absolute;
-  bottom: -20px;
-  background-color: black;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  font-weight: bold;
-`;
-
-const Passline = styled.div`
-  background-color: yellow;
-  color: black;
-  padding: 10px;
-  margin-top: 40px;  /* Increased margin to create space */
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1.5em;
-  position: relative;
-`;
-
-const PasslineOddsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-`;
-
-const PasslineOdds = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Chip = styled.div`
-  background-color: ${({ bgColor }) => bgColor};
-  color: white;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-top: 5px;
-  font-size: 1em;
-  font-weight: bold;
-  border: 2px solid white;
-  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
-`;
-
-const BackToToolsLink = styled(Link)`
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: grey;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  &:hover {
-    background-color: darkgrey;
-  }
-`;
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import {
+    Container,
+    Title,
+    Lead,
+    CrapsTable,
+    Row,
+    Block,
+    Odds,
+    Passline,
+    PasslineOddsContainer,
+    PasslineOdds,
+    Chip,
+    BackToToolsLink,
+    Note,
+    ModalContent,
+    ChipDisplay,
+    ModalChip,
+    OddsTitle,
+    modalStyles,
+} from './InteractiveTool7Styles';
 
 const numbers = [4, 5, 6, 8, 9, 10];
 const placeBetOdds = {
@@ -132,17 +47,190 @@ const blockColors = {
     8: 'purple',
 };
 
+const payoutInfo = {
+    4: {
+        placeBet: [
+            { bet: '$5', payout: '$9' },
+            { bet: '$10', payout: '$18' },
+            { bet: '$15', payout: '$27' },
+            { bet: '$20', payout: '$36' },
+            { bet: '$25', payout: '$45' },
+            { bet: '$30', payout: '$54' },
+            { bet: '$35', payout: '$63' },
+            { bet: '$40', payout: '$72' },
+            { bet: '$45', payout: '$81' },
+            { bet: '$50', payout: '$90' },
+        ],
+        passline: [
+            { bet: '$5', payout: '$10' },
+            { bet: '$10', payout: '$20' },
+            { bet: '$15', payout: '$30' },
+            { bet: '$20', payout: '$40' },
+            { bet: '$25', payout: '$50' },
+            { bet: '$30', payout: '$60' },
+            { bet: '$35', payout: '$70' },
+            { bet: '$40', payout: '$80' },
+            { bet: '$45', payout: '$90' },
+            { bet: '$50', payout: '$100' },
+        ],
+    },
+    5: {
+        placeBet: [
+            { bet: '$5', payout: '$7' },
+            { bet: '$10', payout: '$14' },
+            { bet: '$15', payout: '$21' },
+            { bet: '$20', payout: '$28' },
+            { bet: '$25', payout: '$35' },
+            { bet: '$30', payout: '$42' },
+            { bet: '$35', payout: '$49' },
+            { bet: '$40', payout: '$56' },
+            { bet: '$45', payout: '$63' },
+            { bet: '$50', payout: '$70' },
+        ],
+        passline: [
+            { bet: '$6', payout: '$9' },
+            { bet: '$10', payout: '$15' },
+            { bet: '$16', payout: '$24' },
+            { bet: '$20', payout: '$30' },
+            { bet: '$26', payout: '$39' },
+            { bet: '$30', payout: '$45' },
+            { bet: '$36', payout: '$54' },
+            { bet: '$40', payout: '$60' },
+            { bet: '$46', payout: '$69' },
+            { bet: '$50', payout: '$75' },
+        ],
+    },
+    6: {
+        placeBet: [
+            { bet: '$6', payout: '$7' },
+            { bet: '$12', payout: '$14' },
+            { bet: '$18', payout: '$21' },
+            { bet: '$24', payout: '$28' },
+            { bet: '$30', payout: '$35' },
+            { bet: '$36', payout: '$42' },
+            { bet: '$42', payout: '$49' },
+            { bet: '$48', payout: '$56' },
+            { bet: '$54', payout: '$63' },
+            { bet: '$60', payout: '$70' },
+        ],
+        passline: [
+            { bet: '$5', payout: '$6' },
+            { bet: '$10', payout: '$12' },
+            { bet: '$15', payout: '$18' },
+            { bet: '$20', payout: '$24' },
+            { bet: '$25', payout: '$30' },
+            { bet: '$30', payout: '$36' },
+            { bet: '$35', payout: '$42' },
+            { bet: '$40', payout: '$48' },
+            { bet: '$45', payout: '$54' },
+            { bet: '$50', payout: '$60' },
+        ],
+    },
+    8: {
+        placeBet: [
+            { bet: '$6', payout: '$7' },
+            { bet: '$12', payout: '$14' },
+            { bet: '$18', payout: '$21' },
+            { bet: '$24', payout: '$28' },
+            { bet: '$30', payout: '$35' },
+            { bet: '$36', payout: '$42' },
+            { bet: '$42', payout: '$49' },
+            { bet: '$48', payout: '$56' },
+            { bet: '$54', payout: '$63' },
+            { bet: '$60', payout: '$70' },
+        ],
+        passline: [
+            { bet: '$5', payout: '$6' },
+            { bet: '$10', payout: '$12' },
+            { bet: '$15', payout: '$18' },
+            { bet: '$20', payout: '$24' },
+            { bet: '$25', payout: '$30' },
+            { bet: '$30', payout: '$36' },
+            { bet: '$35', payout: '$42' },
+            { bet: '$40', payout: '$48' },
+            { bet: '$45', payout: '$54' },
+            { bet: '$50', payout: '$60' },
+        ],
+    },
+    9: {
+        placeBet: [
+            { bet: '$5', payout: '$7' },
+            { bet: '$10', payout: '$14' },
+            { bet: '$15', payout: '$21' },
+            { bet: '$20', payout: '$28' },
+            { bet: '$25', payout: '$35' },
+            { bet: '$30', payout: '$42' },
+            { bet: '$35', payout: '$49' },
+            { bet: '$40', payout: '$56' },
+            { bet: '$45', payout: '$63' },
+            { bet: '$50', payout: '$70' },
+        ],
+        passline: [
+            { bet: '$6', payout: '$9' },
+            { bet: '$10', payout: '$15' },
+            { bet: '$16', payout: '$24' },
+            { bet: '$20', payout: '$30' },
+            { bet: '$26', payout: '$39' },
+            { bet: '$30', payout: '$45' },
+            { bet: '$36', payout: '$54' },
+            { bet: '$40', payout: '$60' },
+            { bet: '$46', payout: '$69' },
+            { bet: '$50', payout: '$75' },
+        ],
+    },
+    10: {
+        placeBet: [
+            { bet: '$5', payout: '$9' },
+            { bet: '$10', payout: '$18' },
+            { bet: '$15', payout: '$27' },
+            { bet: '$20', payout: '$36' },
+            { bet: '$25', payout: '$45' },
+            { bet: '$30', payout: '$54' },
+            { bet: '$35', payout: '$63' },
+            { bet: '$40', payout: '$72' },
+            { bet: '$45', payout: '$81' },
+            { bet: '$50', payout: '$90' },
+        ],
+        passline: [
+            { bet: '$5', payout: '$10' },
+            { bet: '$10', payout: '$20' },
+            { bet: '$15', payout: '$30' },
+            { bet: '$20', payout: '$40' },
+            { bet: '$25', payout: '$50' },
+            { bet: '$30', payout: '$60' },
+            { bet: '$35', payout: '$70' },
+            { bet: '$40', payout: '$80' },
+            { bet: '$45', payout: '$90' },
+            { bet: '$50', payout: '$100' },
+        ],
+    },
+};
+
 function InteractiveCrapsTool() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalContent, setModalContent] = useState([]);
+    const [modalTitle, setModalTitle] = useState('');
+
+    const openModal = (num, type) => {
+        setModalContent(payoutInfo[num][type]);
+        setModalTitle(type === 'placeBet' ? placeBetOdds[num] : passlineOdds[num]);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
     return (
         <Container>
             <Title>Payout Odds Cheat Sheet</Title>
             <Lead>
-                Quick reference for place bet and passline odds.
+                Click on the odds to view detailed examples of payouts.
             </Lead>
             <CrapsTable>
                 <Row>
                     {numbers.map((num) => (
-                        <Block key={num} bgColor={blockColors[num]}>
+                        <Block key={num} bgColor={blockColors[num]} onClick={() => openModal(num, 'placeBet')}>
                             {num}
                             <Odds>{placeBetOdds[num]}</Odds>
                         </Block>
@@ -152,13 +240,34 @@ function InteractiveCrapsTool() {
                 <PasslineOddsContainer>
                     {numbers.map((num) => (
                         <PasslineOdds key={num}>
-                            <Chip bgColor={blockColors[num]}>
+                            <Chip bgColor={blockColors[num]} onClick={() => openModal(num, 'passline')}>
                                 {passlineOdds[num]}
                             </Chip>
                         </PasslineOdds>
                     ))}
                 </PasslineOddsContainer>
             </CrapsTable>
+            <Note>
+                For the odds behind the passline on the 5 and 9, players are advised to make their odds an even number by adding $1 or $5 to their bets to ensure even payouts. Unlike other table games, the craps table doesn't have $2.50 chips, necessitating even odds for the 5 and 9. These guidelines ensure a smooth and fair gaming experience.
+            </Note>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Payout Information"
+                style={modalStyles}
+            >
+                <OddsTitle>{modalTitle}</OddsTitle>
+                <ModalContent>
+                    {modalContent.map((entry, index) => (
+                        <ChipDisplay key={index}>
+                            <ModalChip bgColor="red">{entry.bet}</ModalChip>
+                            <span>=</span>
+                            <ModalChip bgColor="green">{entry.payout}</ModalChip>
+                        </ChipDisplay>
+                    ))}
+                </ModalContent>
+                <button onClick={closeModal}>Close</button>
+            </Modal>
             <BackToToolsLink to="/tips">Return to Interactive Tools</BackToToolsLink>
         </Container>
     );
