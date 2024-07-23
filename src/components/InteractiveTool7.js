@@ -1,119 +1,144 @@
 import React from 'react';
-import {
-    Container,
-    Title,
-    Lead,
-    CrapsTable,
-    Section,
-    SectionTitle,
-    SectionContent,
-    Payout,
-} from './InteractiveTool7Styles';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const sections = [
-    {
-        title: 'Pass Line',
-        content: [
-            'A bet for the shooter to win.',
-            '7 or 11 on the come-out roll wins even money.',
-            '2, 3, or 12 on the come-out roll loses.',
-            'Point number (4, 5, 6, 8, 9, 10) must be rolled again before a 7 to win.',
-        ],
-    },
-    {
-        title: 'Don’t Pass',
-        content: [
-            'A bet against the shooter.',
-            '2 or 3 on the come-out roll wins even money.',
-            '7 or 11 on the come-out roll loses.',
-            '12 on the come-out roll is a push.',
-            'Point number (4, 5, 6, 8, 9, 10) must not be rolled again before a 7 to win.',
-        ],
-    },
-    {
-        title: 'Come',
-        content: [
-            'Similar to the Pass Line bet but made after the come-out roll.',
-            '7 or 11 wins even money.',
-            '2, 3, or 12 loses.',
-            'Point number (4, 5, 6, 8, 9, 10) must be rolled again before a 7 to win.',
-        ],
-    },
-    {
-        title: 'Don’t Come',
-        content: [
-            'Similar to the Don’t Pass bet but made after the come-out roll.',
-            '2 or 3 wins even money.',
-            '7 or 11 loses.',
-            '12 is a push.',
-            'Point number (4, 5, 6, 8, 9, 10) must not be rolled again before a 7 to win.',
-        ],
-    },
-    {
-        title: 'Field',
-        content: [
-            'A one-roll bet.',
-            'Wins if the next roll is 2, 3, 4, 9, 10, 11, or 12.',
-            '2 pays 2:1 and 12 pays 3:1.',
-            'All other numbers lose.',
-        ],
-    },
-    {
-        title: 'Free Odds',
-        content: [
-            'An additional bet made after a point is established.',
-            'Pays true odds if the point is made before a 7.',
-            'Must be a multiple of the original Pass or Come bet.',
-        ],
-    },
-    {
-        title: 'Hardways',
-        content: [
-            'A bet that the shooter will roll a specific double (e.g., 2-2, 3-3) before a 7 or an easier combination of the number.',
-            '4 and 10 pay 7:1.',
-            '6 and 8 pay 9:1.',
-        ],
-    },
-];
+const Container = styled.div`
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+`;
 
-const payouts = [
-    { number: 4, odds: '9:5' },
-    { number: 5, odds: '7:5' },
-    { number: 6, odds: '7:6' },
-    { number: 8, odds: '7:6' },
-    { number: 9, odds: '7:5' },
-    { number: 10, odds: '9:5' },
-];
+const Title = styled.h1`
+  color: red;
+`;
 
-function InteractiveTool7() {
+const Lead = styled.p`
+  color: white;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+`;
+
+const CrapsTable = styled.div`
+  margin: 20px 0;
+`;
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  position: relative;
+`;
+
+const Block = styled.div`
+  background-color: ${({ bgColor }) => bgColor};
+  color: black;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 10px;
+  border-radius: 10px;
+`;
+
+const Odds = styled.div`
+  position: absolute;
+  bottom: -20px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+`;
+
+const PasslineOddsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+`;
+
+const PasslineOdds = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LineBet = styled.div`
+  background-color: yellow;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+`;
+
+const BackToToolsLink = styled(Link)`
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: grey;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  &:hover {
+    background-color: darkgrey;
+  }
+`;
+
+const numbers = [4, 5, 6, 8, 9, 10];
+const placeBetOdds = {
+    4: '9:5',
+    5: '7:5',
+    6: '7:6',
+    8: '7:6',
+    9: '7:5',
+    10: '9:5',
+};
+const passlineOdds = {
+    4: '2:1',
+    5: '3:2',
+    6: '6:5',
+    8: '6:5',
+    9: '3:2',
+    10: '2:1',
+};
+const blockColors = {
+    4: 'blue',
+    10: 'blue',
+    5: 'green',
+    9: 'green',
+    6: 'purple',
+    8: 'purple',
+};
+
+function InteractiveCrapsTool() {
     return (
-        <section id="interactive-tool">
-            <Container>
-                <Title>Craps Table Odds and Payouts</Title>
-                <Lead>
-                    Use this interactive tool to understand the odds and payouts for various bets on a craps table. Click on each section to learn more.
-                </Lead>
-                <CrapsTable>
-                    {sections.map((section, index) => (
-                        <Section key={index}>
-                            <SectionTitle>{section.title}</SectionTitle>
-                            {section.content.map((line, idx) => (
-                                <SectionContent key={idx}>{line}</SectionContent>
-                            ))}
-                        </Section>
+        <Container>
+            <Title>Payout Odds Cheat Sheet</Title>
+            <Lead>
+                Quick reference for place bet and passline odds.
+            </Lead>
+            <CrapsTable>
+                <Row>
+                    {numbers.map((num) => (
+                        <Block key={num} bgColor={blockColors[num]}>
+                            {num}
+                            <Odds>{placeBetOdds[num]}</Odds>
+                        </Block>
                     ))}
-                    <Section>
-                        <SectionTitle>Place Bets</SectionTitle>
-                        {payouts.map((payout) => (
-                            <Payout key={payout.number}>
-                                {payout.number}: {payout.odds}
-                            </Payout>
-                        ))}
-                    </Section>
-                </CrapsTable>
-            </Container>
-        </section>
+                </Row>
+                <PasslineOddsContainer>
+                    {numbers.map((num) => (
+                        <PasslineOdds key={num}>
+                            <LineBet>Line Bet</LineBet>
+                            {passlineOdds[num]}
+                        </PasslineOdds>
+                    ))}
+                </PasslineOddsContainer>
+            </CrapsTable>
+            <BackToToolsLink to="/tips">Return to Interactive Tools</BackToToolsLink>
+        </Container>
     );
 }
 
-export default InteractiveTool7;
+export default InteractiveCrapsTool;
