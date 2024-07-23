@@ -58,7 +58,7 @@ export const Odds = styled.div`
 export const Passline = styled.div`
   background-color: yellow;
   color: black;
-  padding: 10px;
+  padding: 5px; /* Reduced padding to decrease thickness */
   margin-top: 40px;
   border-radius: 10px;
   text-align: center;

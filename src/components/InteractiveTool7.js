@@ -236,7 +236,7 @@ function InteractiveCrapsTool() {
                         </Block>
                     ))}
                 </Row>
-                <Passline>Passline</Passline>
+                <Passline>Passline 1:1</Passline>
                 <PasslineOddsContainer>
                     {numbers.map((num) => (
                         <PasslineOdds key={num}>
