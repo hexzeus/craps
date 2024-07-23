@@ -52,10 +52,21 @@ const Odds = styled.div`
   border-radius: 5px;
 `;
 
+const Passline = styled.div`
+  background-color: yellow;
+  color: black;
+  padding: 10px;
+  margin-top: 40px;  /* Increased margin to create space */
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  position: relative;
+`;
+
 const PasslineOddsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin-top: 20px;
 `;
 
 const PasslineOdds = styled.div`
@@ -64,12 +75,17 @@ const PasslineOdds = styled.div`
   align-items: center;
 `;
 
-const LineBet = styled.div`
-  background-color: yellow;
-  color: black;
-  padding: 5px;
-  border-radius: 5px;
-  margin-bottom: 5px;
+const Chip = styled.div`
+  background-color: ${({ bgColor }) => bgColor};
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-top: 5px;
+  font-size: 0.8em;
 `;
 
 const BackToToolsLink = styled(Link)`
@@ -127,11 +143,13 @@ function InteractiveCrapsTool() {
                         </Block>
                     ))}
                 </Row>
+                <Passline>Passline</Passline>
                 <PasslineOddsContainer>
                     {numbers.map((num) => (
                         <PasslineOdds key={num}>
-                            <LineBet>Line Bet</LineBet>
-                            {passlineOdds[num]}
+                            <Chip bgColor={blockColors[num]}>
+                                {passlineOdds[num]}
+                            </Chip>
                         </PasslineOdds>
                     ))}
                 </PasslineOddsContainer>
