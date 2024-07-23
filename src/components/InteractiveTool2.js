@@ -41,7 +41,7 @@ function InteractiveTool2() {
     return (
         <section id="interactive-tool2">
             <Container>
-                <Title>Interactive Learning Tool: Horn Bets</Title>
+                <Title>Horn Bets</Title>
                 <Lead>
                     Explore horn bets with our interactive tool. Horn bets are always in units of 4, covering the numbers 2, 3, 11, and 12. Select a bet amount, place your horn bet, and see the potential payouts.
                 </Lead>

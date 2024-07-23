@@ -47,7 +47,7 @@ function InteractiveTool4() {
     return (
         <section id="interactive-tool4">
             <Container>
-                <Title>Interactive Learning Tool: Horn High Bets</Title>
+                <Title>Horn High Bets</Title>
                 <Lead>
                     Choose a bet amount, place your horn high bet, and see the payouts for 2, 3, 11, or 12. $5 Horn High bets are $4 horn bets with an extra dollar on the selected number.
                 </Lead>

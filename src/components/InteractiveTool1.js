@@ -61,7 +61,7 @@ function InteractiveTool() {
     return (
         <section id="interactive-tool">
             <Container>
-                <Title>Interactive Learning Tool: Inside and Outside Numbers</Title>
+                <Title>Inside and Outside Numbers</Title>
                 <Lead>
                     Learn to distinguish between inside and outside numbers with this tool. Click on a number to set the point and highlight the corresponding inside or outside numbers. Mastering this is essential for managing the game and assisting players accurately.
                 </Lead>

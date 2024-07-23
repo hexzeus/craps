@@ -35,7 +35,7 @@ function InteractiveTool3() {
     return (
         <section id="interactive-tool3">
             <Container>
-                <Title>Interactive Learning Tool: World Bets</Title>
+                <Title>World Bets</Title>
                 <Lead>
                     Choose a bet amount, place your world bet, and see the payouts for 2, 3, 7, 11, or 12. A world bet is a $5 increment bet that combines a $4 horn bet with a $1 any seven bet.
                 </Lead>
