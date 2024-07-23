@@ -50,6 +50,8 @@ const Odds = styled.div`
   color: white;
   padding: 5px;
   border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
 `;
 
 const Passline = styled.div`
@@ -85,7 +87,10 @@ const Chip = styled.div`
   justify-content: center;
   border-radius: 50%;
   margin-top: 5px;
-  font-size: 0.8em;
+  font-size: 1em;
+  font-weight: bold;
+  border: 2px solid white;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
 `;
 
 const BackToToolsLink = styled(Link)`

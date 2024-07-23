@@ -12,9 +12,9 @@ function Tips() {
                     <InteractiveToolLink to="/interactive-tool3">World Bets Overview</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool2">Horn Bets Guide</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool4">Horn High Bets Explained</InteractiveToolLink>
+                    <InteractiveToolLink to="/interactive-tool7">Payout Odds Cheat Sheet</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool5">$15 Place Bets</InteractiveToolLink>
                     <InteractiveToolLink to="/interactive-tool6">$25 Place Bets</InteractiveToolLink>
-                    <InteractiveToolLink to="/interactive-tool7">Payout Odds Cheat Sheet</InteractiveToolLink>
                 </ToolContainer>
                 <Title>Tips & Resources</Title>
                 <Lead>Explore tips and resources to improve your skills as a craps dealer.</Lead>

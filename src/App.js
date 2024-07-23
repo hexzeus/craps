@@ -24,7 +24,7 @@ function App() {
         <ScrollToTop />
         <header>
           <Navbar>
-            <NavbarBrand to="/">
+            <NavbarBrand to="/index.html">
               <Logo src={logo} alt="Buffalo Creek Craps Logo" />
               BCCC
             </NavbarBrand>
