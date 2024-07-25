@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle, Navbar, NavbarBrand, NavbarLinks, NavLink, Footer, Logo, MainImage } from './AppStyles';
 import Home from './components/Home';
@@ -17,21 +17,13 @@ import logo from './images/logo.png';
 import mainImage from './images/main.jpg';
 
 function App() {
-  const logoRef = useRef(null);
-
-  useEffect(() => {
-    if (logoRef.current) {
-      logoRef.current.click();
-    }
-  }, []);
-
   return (
     <div className="App">
       <GlobalStyle />
       <ScrollToTop />
       <header>
         <Navbar>
-          <NavbarBrand to="/index.html" ref={logoRef}>
+          <NavbarBrand to="/index.html">
             <Logo src={logo} alt="Buffalo Creek Craps Logo" />
             BCCC
           </NavbarBrand>
